@@ -15,7 +15,7 @@ def confirmation_token
              self.confirm_token = nil
              save!(:validate => false)
            end
-           
+
          private
          def confirmation_token
                if self.confirm_token.blank?
