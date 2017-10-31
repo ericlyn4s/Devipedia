@@ -16,7 +16,7 @@ class WikisController < ApplicationController
      @wiki = Wiki.new
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
-
+     @wiki.user = current_user
 
      if @wiki.save
 
@@ -50,9 +50,8 @@ class WikisController < ApplicationController
    def destroy
      @wiki = Wiki.find(params[:id])
 
- # #8
      if @wiki.destroy
-       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
+       flash[:notice] = "'#{@wiki.title}' was deleted successfully."
        redirect_to wikis_path
      else
        flash.now[:alert] = "There was an error deleting the wiki."
