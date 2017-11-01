@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def after_initialize
-    return unless new_record?
+    return unless new_user?
     user.status = standard
   end
 
