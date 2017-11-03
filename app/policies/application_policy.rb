@@ -6,11 +6,6 @@ class ApplicationPolicy
     @record = record
   end
 
-  def after_initialize
-    return unless new_user?
-    user.status = standard
-  end
-
   def index?
     false
   end
