@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Faker::Name.name      #=> "Christophe Bartell"
+
+Faker::Wikis.wiki #=> "kirsten.greenholt@corkeryfisher.info"
