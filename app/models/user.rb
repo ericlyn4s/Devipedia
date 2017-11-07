@@ -5,8 +5,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  before_save {self.role ||= :standard}
+  before_create :set_default_role
 
   enum role: [:standard, :premium, :admin]
+
+  def set_default_role
+    logger.info("before_create")
+    puts("before_create")
+    self.role ||= :standard
+  end
 
 end
