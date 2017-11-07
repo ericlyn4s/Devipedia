@@ -8,6 +8,20 @@
 
 require 'faker'
 
-Faker::Name.name      #=> "Christophe Bartell"
+5.times do
 
-Faker::Wikis.wiki #=> "kirsten.greenholt@corkeryfisher.info"
+User.create(
+  email: Faker::Internet.email,
+  password: "hellothere1",
+  password_confirmation: "hellothere1"
+)
+end
+users = User.all
+
+25.times do
+  Wiki.create!(
+    title: Faker::Name.name,
+    body: Faker::Markdown.inline_code,
+    user_id: users.sample
+  )
+end
