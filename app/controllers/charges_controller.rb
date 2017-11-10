@@ -34,3 +34,4 @@ class ChargesController < ApplicationController
      amount: Amount.default
    }
  end
+ end
