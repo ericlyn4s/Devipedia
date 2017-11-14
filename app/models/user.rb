@@ -7,12 +7,10 @@ class User < ApplicationRecord
 
   before_create :set_default_role
 
+  before_save {if self.role == :standard then :amount end}
+
   enum role: [:standard, :premium, :admin]
 
-  def set_default_role
-    logger.info("before_create")
-    puts("before_create")
-    self.role ||= :standard
-  end
+  enum amount: [15.00]
 
 end
