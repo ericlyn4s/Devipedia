@@ -145,6 +145,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.1.0)
+    redcarpet (3.4.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -228,6 +229,7 @@ DEPENDENCIES
   rails (~> 5.1.2)
   rails-controller-testing
   rails_12factor
+  redcarpet
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sqlite3
