@@ -9,8 +9,12 @@ class User < ApplicationRecord
 
   before_save {if self.role == :standard then :amount end}
 
-  enum role: [:standard, :premium, :admin]
+  enum role: [:standard, :premium]
 
   enum amount: [15.00]
+
+  def set_default_role
+    self.role = :standard
+  end
 
 end

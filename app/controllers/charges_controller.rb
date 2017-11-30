@@ -11,12 +11,16 @@ class ChargesController < ApplicationController
      # Where the real magic happens
      charge = Stripe::Charge.create(
        customer: customer.id, # Note -- this is NOT the user_id in your app
-       amount: Amount.default,
-       description: "BigMoney Membership - #{current_user.email}",
+       amount: 15.00,
+       description: "Upgrade to Premium Membership - #{current_user.email}",
        currency: 'usd'
      )
 
-     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+     @user.update_attributes(role: 'premium')
++     #@user.role = 'premium'
++     #@user.save
++
++    flash[:notice] = "Thanks for all the money, #{current_user.email}! You can now create and edit private wikis."
      redirect_to user_path(current_user) # or wherever
 
      # Stripe will send back CardErrors, with friendly messages
@@ -29,9 +33,17 @@ class ChargesController < ApplicationController
 
    def new
    @stripe_btn_data = {
-     key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     description: "BigMoney Membership - #{current_user.name}",
-     amount: Amount.default
+     key: "#{ Rails.configuration
+     .stripe[:publishable_key] }",
+     description: "Premium Membership - #{current_user.email}",
++     amount: 15_00
    }
  end
+
+ private
++
++  def upgrade_user_role
++    @user.role = 'premium'
++  end
+
  end
