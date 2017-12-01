@@ -1,0 +1,12 @@
+<h1>All Wikis</h1>
+
+<div class="New Form">
+  <%= link_to "New Post", new_wiki_path %>
+</div>
+<% @wikis.each do |wiki| %>
+<div class="media">
+   <div class="media-body">
+     <h4 class="media-heading"><%= link_to markdown(wiki.title), wiki %></h4>
+   </div>
+ </div>
+<% end %>
